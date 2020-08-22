@@ -7,7 +7,8 @@
 // http://euler.stephan-brumme.com/11/
 //
 // # Problem
-// In the 20x20 grid below, four numbers along a diagonal line have been marked in red.
+// In the 20x20 grid below, four numbers along a diagonal line have been marked
+// in red.
 //
 // 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 // 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
@@ -53,11 +54,10 @@
 // Be careful when reading a 2D matrix from console:
 // the outer loop must belong to the y-axis, the inner to x.
 // A common mistake of mine is to swap those two.
-//https://github.com/stbrumme/euler/blob/master/euler-0011.cpp
+// https://github.com/stbrumme/euler/blob/master/euler-0011.cpp
 #include <iostream>
 
-int main()
-{
+int main() {
   // always a 20x20 matrix
   const unsigned int Size = 20;
   unsigned int matrix[Size][Size];
@@ -70,33 +70,32 @@ int main()
   unsigned int best = 0;
   // walk through all cells of the matrix
   for (unsigned int y = 0; y < Size; y++)
-    for (unsigned int x = 0; x < Size; x++)
-    {
+    for (unsigned int x = 0; x < Size; x++) {
       // three more horizontal cells (right)
-      if (x + 3 < Size)
-      {
-        unsigned int current = matrix[x][y] * matrix[x+1][y] * matrix[x+2][y] * matrix[x+3][y];
+      if (x + 3 < Size) {
+        unsigned int current = matrix[x][y] * matrix[x + 1][y] *
+                               matrix[x + 2][y] * matrix[x + 3][y];
         if (best < current)
           best = current;
       }
       // three more vertical cells available (down)
-      if (y + 3 < Size)
-      {
-        unsigned int current = matrix[x][y] * matrix[x][y+1] * matrix[x][y+2] * matrix[x][y+3];
+      if (y + 3 < Size) {
+        unsigned int current = matrix[x][y] * matrix[x][y + 1] *
+                               matrix[x][y + 2] * matrix[x][y + 3];
         if (best < current)
           best = current;
       }
       // three more diagonal cells (right-down)
-      if (x + 3 < Size && y + 3 < Size)
-      {
-        unsigned int current = matrix[x][y] * matrix[x+1][y+1] * matrix[x+2][y+2] * matrix[x+3][y+3];
+      if (x + 3 < Size && y + 3 < Size) {
+        unsigned int current = matrix[x][y] * matrix[x + 1][y + 1] *
+                               matrix[x + 2][y + 2] * matrix[x + 3][y + 3];
         if (best < current)
           best = current;
       }
       // three more diagonal cells (left-down)
-      if (x + 3 < Size && y >= 3)
-      {
-        unsigned int current = matrix[x][y] * matrix[x+1][y-1] * matrix[x+2][y-2] * matrix[x+3][y-3];
+      if (x + 3 < Size && y >= 3) {
+        unsigned int current = matrix[x][y] * matrix[x + 1][y - 1] *
+                               matrix[x + 2][y - 2] * matrix[x + 3][y - 3];
         if (best < current)
           best = current;
       }
